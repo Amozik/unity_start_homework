@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 2701863865896896819}
   - component: {fileID: 7438738072484405706}
   - component: {fileID: 3576288450122217075}
-  - component: {fileID: 5576537805225417367}
+  - component: {fileID: 351971206840037177}
   - component: {fileID: 355967702596757054}
   - component: {fileID: 685090927300085920}
   m_Layer: 0
@@ -867,6 +867,7 @@ Transform:
   m_Children:
   - {fileID: 310933272658838984}
   - {fileID: 4425383467037466535}
+  - {fileID: 1081469475636330317}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -919,7 +920,7 @@ CapsuleCollider:
   m_Height: 1.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.7, z: 0}
---- !u!114 &5576537805225417367
+--- !u!114 &351971206840037177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -928,11 +929,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6077229646317852079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c33982bb49ccd148b253845e5a28586, type: 3}
+  m_Script: {fileID: 11500000, guid: 569c10f8560c9ef458183f31ab760ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 20
-  moveSpeed: 2.5
+  _speed: 3
+  _turnSpeed: 0.2
+  _mine: {fileID: 1641553944462932475, guid: 3278e79448282d44fa8064fb30977456, type: 3}
+  _mineSpawnPlace: {fileID: 1081469475636330317}
 --- !u!82 &355967702596757054
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1129,6 +1132,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3454770868514208346}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7280916844851933866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1081469475636330317}
+  m_Layer: 0
+  m_Name: SpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1081469475636330317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280916844851933866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.795, z: 0.379}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2008973354732098957}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7306243552098430833
 GameObject:
