@@ -10,6 +10,7 @@ public class MyPlayerMove : MonoBehaviour
     [SerializeField] private Transform _mineSpawnPlace;
 
     private Vector3 _direction;
+    private List<string> keys;
 
     private void Update()
     {
@@ -31,6 +32,17 @@ public class MyPlayerMove : MonoBehaviour
 
         var speed = _direction * _speed * Time.fixedDeltaTime;
         transform.Translate(speed, Space.World);
+    }
+
+    public void AddKey(string keyName)
+    {
+        keys.Add(keyName);        
+    }
+
+    public bool HasKey(string keyName)
+    {
+        Debug.Log(keyName);
+        return keys.Contains(keyName);
     }
 
 }
