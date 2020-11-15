@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class MyPlayerMove : MonoBehaviour
 {
+    [SerializeField] private int _health;
     [SerializeField] private float _speed = 3; 
     [SerializeField] private float _turnSpeed = .2f;
     [SerializeField] private GameObject _mine;
     [SerializeField] private Transform _mineSpawnPlace;
 
+    private Vector3 _startPos = Vector3.zero;
+    private int startHealth = 0;
+
     private Vector3 _direction;
     private List<string> keys;
+
+    private void Awake()
+    {
+        keys = new List<string>();
+        _startPos = transform.position;
+        startHealth = _health;
+    }
 
     private void Update()
     {
@@ -32,6 +43,26 @@ public class MyPlayerMove : MonoBehaviour
 
         var speed = _direction * _speed * Time.fixedDeltaTime;
         transform.Translate(speed, Space.World);
+    }
+
+    public void Heal(int health)
+    {
+        _health += health;
+    }
+    public void Hurt(int damage)
+    {              
+        _health -= damage;
+
+        if (_health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        transform.position  = _startPos;
+        _health = startHealth;
     }
 
     public void AddKey(string keyName)
