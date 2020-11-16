@@ -6,8 +6,9 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [SerializeField] private float _turnSpeed = 20f;
-    [SerializeField] GameObject bullet = null;
-    [SerializeField] Transform bulletSpawnPos = null;    
+    [SerializeField] private GameObject _bullet = null;
+    [SerializeField] private float _bulletForce = 1000;    
+    [SerializeField] private Transform _bulletSpawnPos = null;    
     [SerializeField] private float _bulletTimer = 1.5f;
     private float _timer = 0;
 
@@ -25,10 +26,10 @@ public class Turret : MonoBehaviour
 
         if (player) {
 
-            //Тут я попытался сдлать, чтобы персонажа не отслеживали через стены
+            //Тут я попытался сделать, чтобы персонажа не отслеживали через стены
             //но, на мой взгляд, после добавления плавного вращения, стало работать не очень
             RaycastHit hit;
-            if (Physics.Linecast(transform.position, player.transform.position, out hit))
+            if (Physics.Linecast(_bulletSpawnPos.position, player.transform.position, out hit))
             {
                 if (hit.collider.CompareTag("Player")) {
                    isVisible = true;
@@ -50,8 +51,8 @@ public class Turret : MonoBehaviour
             if (_timer > _bulletTimer)
             {
                 _timer = 0;
-                Vector3 dir = player.transform.position - bulletSpawnPos.position;
-                var bulletScript = Instantiate(bullet, bulletSpawnPos.position, Quaternion.LookRotation(targetDir)).GetComponent<Bullet>();
+                //Vector3 dir = player.transform.position - _bulletSpawnPos.position;
+                var bulletScript = Instantiate(_bullet, _bulletSpawnPos.position, Quaternion.LookRotation(targetDir)).GetComponent<Bullet>();
                 bulletScript.Init(player.transform.position);
             }
         } else
