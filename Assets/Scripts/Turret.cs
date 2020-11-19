@@ -47,10 +47,10 @@ public class Turret : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(newDir);
             //transform.rotation = Quaternion.LookRotation(targetDir);
 
-            _timer += Time.deltaTime;
-            if (_timer > _bulletTimer)
+            _timer -= Time.deltaTime;
+            if (_timer < 0 )
             {
-                _timer = 0;
+                _timer = _bulletTimer;
                 //Vector3 dir = player.transform.position - _bulletSpawnPos.position;
                 var bulletScript = Instantiate(_bullet, _bulletSpawnPos.position, Quaternion.LookRotation(targetDir)).GetComponent<Bullet>();
                 bulletScript.Init(player.transform.position);

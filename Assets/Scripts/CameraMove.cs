@@ -10,6 +10,7 @@ public class CameraMove : MonoBehaviour
     void Start()
     {
         _startPosition = transform.position - _player.position;
+        Cursor.visible = false;
     }
 
     void Update()

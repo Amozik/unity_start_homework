@@ -15,12 +15,14 @@ public class MyPlayerMove : MonoBehaviour
 
     private Vector3 _direction;
     private List<string> keys;
+    private Animator _animator;
 
     private void Awake()
     {
         keys = new List<string>();
         _startPos = transform.position;
         startHealth = _health;
+        _animator = GetComponent<Animator> ();
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class MyPlayerMove : MonoBehaviour
             clone.AddForce(transform.forward * 200);
         }
 
+        _animator.SetBool ("IsWalking", _direction != Vector3.zero);
     }
 
     private void FixedUpdate()
