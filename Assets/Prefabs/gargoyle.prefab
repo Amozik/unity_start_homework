@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2574498473577268325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0.3}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0.354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6199127110365035078}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 1667998709261404206}
   - component: {fileID: 710265749}
   m_Layer: 0
-  m_Name: _argoyle
+  m_Name: gargoyle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8038108750564668487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5697217, y: -0.13101166, z: 0.76949763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1520848442134742003}
@@ -224,7 +224,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: b1b7db4014f7e6a40a5b86d492dec29e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
@@ -256,5 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576a9b1505b1dd7448d2386c81261e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8020778455711823310, guid: 943fac5362d9aad4281d6d59adb8e364, type: 3}
-  bulletSpawnPos: {fileID: 5613737413107227574}
+  _turnSpeed: 20
+  _bullet: {fileID: 8676124154549536976, guid: 50592ef793f534747b5890e5791ebfa0, type: 3}
+  _bulletForce: 1000
+  _bulletSpawnPos: {fileID: 5613737413107227574}
+  _bulletTimer: 1.5

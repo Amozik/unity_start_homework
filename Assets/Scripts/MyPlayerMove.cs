@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MyPlayerMove : MonoBehaviour
 {
-    [SerializeField] private int _health;
+    public int health = 3;
     [SerializeField] private float _speed = 3; 
     [SerializeField] private float _turnSpeed = .2f;
+    [SerializeField] private float _jumpForce = 200f;
     [SerializeField] private GameObject _mine;
     [SerializeField] private Transform _mineSpawnPlace;
 
@@ -16,13 +17,16 @@ public class MyPlayerMove : MonoBehaviour
     private Vector3 _direction;
     private List<string> keys;
     private Animator _animator;
+    private Rigidbody _rb;
+    private bool _isGrounded;
 
     private void Awake()
     {
         keys = new List<string>();
         _startPos = transform.position;
-        startHealth = _health;
-        _animator = GetComponent<Animator> ();
+        startHealth = health;
+        _animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -36,7 +40,12 @@ public class MyPlayerMove : MonoBehaviour
             clone.AddForce(transform.forward * 200);
         }
 
-        _animator.SetBool ("IsWalking", _direction != Vector3.zero);
+        if (Input.GetButtonDown("Jump") && _isGrounded)
+        {
+            _rb.AddForce(Vector3.up * _jumpForce);
+        }
+
+        //_animator.SetBool ("IsWalking", _direction != Vector3.zero);
     }
 
     private void FixedUpdate()
@@ -50,13 +59,13 @@ public class MyPlayerMove : MonoBehaviour
 
     public void Heal(int health)
     {
-        _health += health;
+        this.health += health;
     }
     public void Hurt(int damage)
     {              
-        _health -= damage;
+        health -= damage;
 
-        if (_health <= 0)
+        if (health <= 0)
         {
             Die();
         }
@@ -65,7 +74,7 @@ public class MyPlayerMove : MonoBehaviour
     private void Die()
     {
         transform.position  = _startPos;
-        _health = startHealth;
+        health = startHealth;
     }
 
     public void AddKey(string keyName)
@@ -77,6 +86,22 @@ public class MyPlayerMove : MonoBehaviour
     {
         Debug.Log(keyName);
         return keys.Contains(keyName);
+    }
+    
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = true;
+        }
+    }
+ 
+    void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = false;
+        }
     }
 
 }
