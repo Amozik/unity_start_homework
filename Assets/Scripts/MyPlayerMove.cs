@@ -45,7 +45,7 @@ public class MyPlayerMove : MonoBehaviour
             _rb.AddForce(Vector3.up * _jumpForce);
         }
 
-        //_animator.SetBool ("IsWalking", _direction != Vector3.zero);
+        _animator.SetBool ("IsWalking", _direction != Vector3.zero);
     }
 
     private void FixedUpdate()
