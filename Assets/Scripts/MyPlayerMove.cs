@@ -31,6 +31,8 @@ public class MyPlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (GameMenu.gameIsPaused) return;
+        
         _direction.x = Input.GetAxis("Horizontal");
         _direction.z = Input.GetAxis("Vertical");
 

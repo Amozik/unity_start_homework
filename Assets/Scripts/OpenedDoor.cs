@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,8 +16,6 @@ public class OpenedDoor : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        
-        closedTrigger.OnTriggerEnter_Action += ClosedTrigger_OnTriggerEnter;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,6 +33,8 @@ public class OpenedDoor : MonoBehaviour
                 //Destroy(gameObject);
                 ShowWalls(false);
             }
+            
+            closedTrigger.OnTriggerEnter_Action += ClosedTrigger_OnTriggerEnter;
         }
     }
     
