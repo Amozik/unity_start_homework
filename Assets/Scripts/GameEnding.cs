@@ -16,7 +16,7 @@ public class GameEnding : MonoBehaviour
     float m_Timer;
     bool m_HasAudioPlayed;
     
-    void OnTriggerEnter (Collider other)
+    private void OnTriggerEnter (Collider other)
     {
         if (other.gameObject == player)
         {
@@ -29,7 +29,7 @@ public class GameEnding : MonoBehaviour
         m_IsPlayerCaught = true;
     }
 
-    void Update ()
+    private void Update ()
     {
         if (m_IsPlayerAtExit)
         {
@@ -41,10 +41,11 @@ public class GameEnding : MonoBehaviour
         }
     }
 
-    void EndLevel (CanvasGroup imageCanvasGroup, bool doRestart, AudioSource audioSource)
+    private void EndLevel (CanvasGroup imageCanvasGroup, bool doRestart, AudioSource audioSource)
     {
         if (!m_HasAudioPlayed)
         {
+            audioSource.volume *= MainMenu.soundVolume;
             audioSource.Play();
             m_HasAudioPlayed = true;
         }

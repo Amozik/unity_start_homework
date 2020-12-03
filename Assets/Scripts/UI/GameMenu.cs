@@ -53,6 +53,8 @@ public class GameMenu : MonoBehaviour
     
     private void StartGame()
     {
+        Time.timeScale = 1;
+        gameIsPaused = false;
         SceneManager.LoadScene("SampleScene");
     }
 

@@ -8,11 +8,14 @@ public class MyEnemy : MonoBehaviour
     [SerializeField] private GameObject _spawner;
     private int startHealth = 0;
     private Rigidbody _rb;
+    private AudioSource _audioSrc;
 
     private void Awake()
     {
         startHealth = _health;
         _rb = GetComponent<Rigidbody>();
+        _audioSrc = GetComponent<AudioSource>();
+        _audioSrc.volume *= MainMenu.soundVolume;
     }
 
     public void Hurt(int damage)

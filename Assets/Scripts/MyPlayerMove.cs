@@ -17,6 +17,7 @@ public class MyPlayerMove : MonoBehaviour
     private Vector3 _direction;
     private List<string> keys;
     private Animator _animator;
+    private AudioSource _audioSrc;
     private Rigidbody _rb;
     private bool _isGrounded;
 
@@ -26,6 +27,9 @@ public class MyPlayerMove : MonoBehaviour
         _startPos = transform.position;
         startHealth = health;
         _animator = GetComponent<Animator>();
+        _audioSrc = GetComponent<AudioSource> ();
+        _audioSrc.volume *= MainMenu.soundVolume;
+
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -51,9 +55,21 @@ public class MyPlayerMove : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {        
-        if (_direction != Vector3.zero) 
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_direction.normalized), _turnSpeed);
+    {
+        if (_direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_direction.normalized),
+                _turnSpeed);
+
+            if (!_audioSrc.isPlaying)
+            {
+                _audioSrc.Play();
+            }
+        }
+        else
+        {
+            _audioSrc.Stop();
+        }
 
         var speed = _direction * _speed * Time.fixedDeltaTime;
         transform.Translate(speed, Space.World);

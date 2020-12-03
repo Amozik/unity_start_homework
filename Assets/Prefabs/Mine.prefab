@@ -128,3 +128,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _explosion: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
+  _sfxExplosion: {fileID: 8300000, guid: bb62fb04bc7cead46b7bbcc64b99a312, type: 3}
